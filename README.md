@@ -6,7 +6,8 @@ A simple Employee Management System built with Node.js, Express, and MongoDB.
 - Add, edit, and delete employee records
 - View employee details in a table format
 - RESTful API with CRUD operations
-- JWT authentication (upcoming feature)
+- User authentication with JWT (Login, Registration, Logout)
+- Secure environment variables for database credentials
 
 ## Installation & Setup
 
@@ -19,7 +20,7 @@ A simple Employee Management System built with Node.js, Express, and MongoDB.
    ```sh
    npm install
    ```
-3. Set up the `.env` file with your MongoDB connection string:
+3. Set up the `.env` file with your MongoDB connection string and JWT secret:
    ```sh
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
@@ -33,10 +34,13 @@ A simple Employee Management System built with Node.js, Express, and MongoDB.
 ## API Documentation
 
 ### Endpoints:
-- `GET /employees` - Get all employees
-- `POST /employees` - Add a new employee
-- `PUT /employees/:id` - Update an employee
-- `DELETE /employees/:id` - Remove an employee
+- `POST /auth/register` - Register a new user
+- `POST /auth/login` - User login
+- `POST /auth/logout` - User logout
+- `GET /employees` - Get all employees (requires authentication)
+- `POST /employees` - Add a new employee (requires authentication)
+- `PUT /employees/:id` - Update an employee (requires authentication)
+- `DELETE /employees/:id` - Remove an employee (requires authentication)
 
 ## Project Structure
 ```
@@ -44,14 +48,19 @@ nodejs-hrms/
 ├── models/         # Database models
 ├── public/         # Frontend static files (HTML, CSS, JS)
 ├── routes/         # API routes
+├── middleware/     # Authentication middleware
 ├── index.js        # Main server file
 ├── package.json    # Dependencies
 ├── .env            # Environment variables
 ```
+
+## Security Measures
+- **Environment Variables:** Sensitive credentials like `MONGO_URI` and `JWT_SECRET` are stored in a `.env` file.
+- **JWT Authentication:** Ensures only authorized users can access the system.
+- **Secure Database Connection:** Removed deprecated MongoDB options for a stable and secure connection.
 
 ## Contributing
 This project was originally developed by Rohit Dharmavaram. Contributions are welcome!
 
 ## License
 This project is open-source and available under the [MIT License](LICENSE).
-
