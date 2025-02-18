@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
@@ -20,6 +20,8 @@ mongoose
 
 const employeeRoutes = require("./routes/employees");
 app.use("/employees", employeeRoutes);
+
+app.use("/auth", require("./routes/auth"));
 
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));

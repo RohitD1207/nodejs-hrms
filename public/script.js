@@ -1,5 +1,22 @@
 const API_URL = "http://localhost:5000/employees";
 
+const token = localStorage.getItem("token");
+
+if (!token) {
+    alert("Please log in first.");
+    window.location.href = "login.html"; // Redirect to login page
+}
+
+document.getElementById("logout-btn").addEventListener("click", () => {
+    localStorage.removeItem("token");  // Remove the JWT token
+    alert("You have been logged out.");
+    window.location.href = "login.html";  // Redirect to login page
+});
+
+if (!localStorage.getItem("token")) {
+    window.location.href = "login.html";  // Redirect if not logged in
+}
+
 // Fetch and display employees
 async function fetchEmployees() {
     try {
