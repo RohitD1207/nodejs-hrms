@@ -50,7 +50,7 @@ nodejs-hrms/
 ```
 
 ## Contributing
-This project was originally developed by Rohit D1207. Contributions are welcome!
+This project was originally developed by Rohit Dharmavaram. Contributions are welcome!
 
 ## License
 This project is open-source and available under the [MIT License](LICENSE).
